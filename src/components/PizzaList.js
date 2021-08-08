@@ -1,7 +1,7 @@
 import React from "react";
 import Pizza from "./Pizza";
 
-function PizzaList() {
+function PizzaList({ pizzas, setPizzas, val, setVal, setIndex }) {
   return (
     <table className="table table-striped">
       <thead>
@@ -13,9 +13,18 @@ function PizzaList() {
         </tr>
       </thead>
       <tbody>
-        {
-          //render Pizza here
-        }
+        {pizzas.map((pizza) => {
+          const { id, topping, vegetarian, size } = pizza;
+          return (
+            <Pizza
+              key={id}
+              pizza={pizza}
+              val={val}
+              setVal={setVal}
+              setIndex={setIndex}
+            />
+          );
+        })}
       </tbody>
     </table>
   );
